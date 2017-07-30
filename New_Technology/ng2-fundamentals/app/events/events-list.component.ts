@@ -2,23 +2,7 @@ import { Component } from '@angular/core'
 
 @Component({
     selector: 'events-list',
-    template: `
-    <div>
-        <h1>Upcoming Angular 2 Events</h1>
-        <hr>
-        <div class="well hoverwell thumbnail">
-            <h2>{{event.name}}</h2>
-            <div>Date: {{event.date}}</div>
-            <div>Time: {{event.time}}</div>
-            <div>Price: \${{event.price}}</div>
-            <div>
-                <span>{{event.location.address}}</span>
-                <span>{{event.location.city}}</span>
-                <span>{{event.location.country}}</span>
-            </div>
-        </div>
-    </div>
-    `
+    templateUrl: 'app/events/events-list.component.html'
 })
 
 export class EventsListComponent {
