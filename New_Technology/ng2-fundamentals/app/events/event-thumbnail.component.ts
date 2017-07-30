@@ -1,6 +1,8 @@
-<div>
-    <h1>Upcoming Angular 2 Events</h1>
-    <hr>
+import { Component, Input } from '@angular/core'
+
+@Component({
+    selector: 'event-thumbnail',
+    template: `
     <div class="well hoverwell thumbnail">
         <h2>{{event.name}}</h2>
         <div>Date: {{event.date}}</div>
@@ -12,4 +14,9 @@
             <span>{{event.location.country}}</span>
         </div>
     </div>
-</div>
+    `
+})
+
+export class EventThumbnailComponent {
+    @Input() event:any
+}
