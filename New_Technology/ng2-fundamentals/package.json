@@ -2,7 +2,7 @@
   "name": "ng2-fundamentals-demo",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run server\" ",
+    "start": "tsc && npm run tsc:w | npm run server",
     "server": "node node_modules/ng2f-server/server.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
