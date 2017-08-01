@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule} from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
 
 import { 
     EventsListComponent, 
@@ -9,14 +10,14 @@ import {
     EventDetailsComponent, 
     CreateEventComponent,
     EventService,
-    EventRouteActivator,
     EventListResolver, 
     CreateSessionComponent, 
     SessionListComponent, 
     DurationPipe,
     UpvoteComponent,
     VoterService, 
-    LocationValidator
+    LocationValidator,
+    EventResolver
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component'
@@ -43,7 +44,8 @@ declare let jQuery:Object
         BrowserModule,
         RouterModule.forRoot(appRoutes), 
         FormsModule, 
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpModule
     ],
     declarations: [
         EventsAppComponent,
@@ -64,6 +66,7 @@ declare let jQuery:Object
     ],
     providers: [
         EventService,
+        EventResolver,
         {
             provide: TOASTR_TOKEN,
             useValue: toastr
@@ -72,7 +75,6 @@ declare let jQuery:Object
             provide: JQ_TOKEN,
             useValue: jQuery
         },
-        EventRouteActivator,
         EventListResolver,
         VoterService,
         AuthService,
