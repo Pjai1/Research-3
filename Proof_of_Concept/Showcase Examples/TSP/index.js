@@ -47,11 +47,11 @@ draw = () => {
 }
 
 //try different connection from current node aka shuffling
-// var swap = (a, i, j) => {
-//   let temp = a[i];
-//   a[i] = a[j];
-//   a[j] = temp;
-// }
+var swap = (a, i, j) => {
+  let temp = a[i];
+  a[i] = a[j];
+  a[j] = temp;
+}
 
 //calculate distance between two locations
 calcDist = (points, order) => {
