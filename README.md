@@ -12,4 +12,5 @@ This repo contains all coursework for Web R&D for Year 3 of MT at KdG
     - Performance: To run these performance tests run `npm i` in both the Performance Tests folder and the sub directory. Start the http-server by running `npm start` and don't forget to run `npm run build-prod` in the sub directories as well.
 - Proof of Concept
     - Is it possible to create an application that provides us with a 'scenic' running/cycling route by running some learning algorithms such as we know in Machine and Deep Learning
+    - Travelling Salesperson Problem (TSP) display test with P5 library
 
