@@ -36,19 +36,42 @@ nextGeneration = () => {
     let newPopulation = [];
 
     for (let i = 0; i < population.length; i++) {
-        let order = pickOne(population, fitness);
-        mutate(order, 0.1);
+        let orderA = pickOne(population, fitness);
+        let orderB = pickOne(population, fitness);
+        let order = crossOver(orderA, orderB);
+        //with crossover the mutation rate can be brought down by traditionally a decimal number so /10
+        mutate(order, 0.01);
         newPopulation[i] = order;
     }
     population = newPopulation;
 }
 
 //adding small subtle changes in the route nodes, kind of like shuffling
+//mutation rate = how much chance does one bit have to change i.e. 10 = therefore 0.1
 mutate = (order, mutationRate) => {
-    let indexA = floor(random(order.length));
-    let indexB = floor(random(order.length));
+    for (let i = 0; i < totalCities; i++) {
+        if (random(1) < mutationRate) {
+            let indexA = floor(random(order.length));
+            let indexB = (indexA+1) % totalCities;
+            swap(order, indexA, indexB);
+        }
+    }
+}
 
-    swap(order, indexA, indexB);
+
+crossOver = (orderA, orderB) => {
+    let start = floor(random(orderA.length));
+    let end = floor(random(start+1, orderA.length));
+    let newOrder = orderA.slice(start, end);
+
+    //check for duplicates before doing crossover
+    for (let i = 0; i < orderB.length; i++) {
+        let city = orderB[i];
+        if (!newOrder.includes(city)) {
+            newOrder.push(city);
+        }
+    }
+    return newOrder;
 }
 
 //pick routes with high fitness values from current generation/population

@@ -1,8 +1,8 @@
 var cities = []; //vector of cities
-const totalCities = 8;
+const totalCities = 10;
 
 var population = [];
-var popSize = 100;
+var popSize = 500;
 var fitness = [];
 
 var recordDistance = Infinity;
