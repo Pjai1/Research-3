@@ -1,11 +1,18 @@
 //in genetic algorithms it is common to order your results, we order them by giving them a fitness value
 calcFitness = () => {
+    let currentRecord = Infinity;
+
     for (let i = 0; i < population.length; i++) {
     //find best ever
     let d = calcDist(cities, population[i]);
     if (d < recordDistance) {
       recordDistance = d;
       bestEver = population[i];
+    }
+
+    if (d < currentRecord) {
+        currentRecord = d;
+        currentBest = population[i];
     }
     fitness[i] = 1/(d+1); //quality of the route
   }
@@ -27,6 +34,7 @@ normFitness = () => {
 //copy previous generation for further testing
 nextGeneration = () => {
     let newPopulation = [];
+
     for (let i = 0; i < population.length; i++) {
         let order = pickOne(population, fitness);
         mutate(order, 0.1);
@@ -39,6 +47,7 @@ nextGeneration = () => {
 mutate = (order, mutationRate) => {
     let indexA = floor(random(order.length));
     let indexB = floor(random(order.length));
+
     swap(order, indexA, indexB);
 }
 

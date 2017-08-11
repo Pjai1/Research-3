@@ -1,5 +1,5 @@
 var cities = []; //vector of cities
-const totalCities = 6;
+const totalCities = 8;
 
 var population = [];
 var popSize = 100;
@@ -7,14 +7,15 @@ var fitness = [];
 
 var recordDistance = Infinity;
 var bestEver;
+var currentBest;
 
 //draw canvas
 setup = () => {
-  createCanvas(800, 600);
+  createCanvas(800, 800);
   let order = []; //how to go through all cities
 
   for (let i = 0; i < totalCities; i++) {
-    let v = createVector(random(width), random(height));
+    let v = createVector(random(width), random(height/2));
     cities[i] = v;
     order[i] = i;
   }
@@ -34,12 +35,24 @@ draw = () => {
   normFitness();
   nextGeneration();
 
-  stroke(255, 0, 255);
+  stroke(255);
   strokeWeight(4);
   noFill();
   beginShape();
   for (let i = 0; i < bestEver.length; i++) {
     let j = bestEver[i];
+    vertex(cities[j].x, cities[j].y);
+    ellipse(cities[j].x, cities[j].y, 16, 16);
+  }
+  endShape();
+
+  translate(0, height/2);
+  stroke(255);
+  strokeWeight(4);
+  noFill();
+  beginShape();
+  for (let i = 0; i < currentBest.length; i++) {
+    let j = currentBest[i];
     vertex(cities[j].x, cities[j].y);
     ellipse(cities[j].x, cities[j].y, 16, 16);
   }
