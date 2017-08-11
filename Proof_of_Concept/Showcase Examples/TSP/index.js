@@ -2,13 +2,14 @@ var cities = []; //vector of cities
 const totalCities = 6;
 
 var population = [];
+var popSize = 100;
 var fitness = [];
 
 var recordDistance = Infinity;
 var bestEver;
 
 //draw canvas
-var setup = () => {
+setup = () => {
   createCanvas(800, 600);
   let order = []; //how to go through all cities
 
@@ -18,24 +19,20 @@ var setup = () => {
     order[i] = i;
   }
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < popSize; i++) {
     population[i] = shuffle(order); //p5 shuffle fn
   }
   console.log(population)
-
-  for (let i = 0; i < population.length; i++) {
-    let d = calcDist(cities, population[i]);
-    if (d < recordDistance) {
-      recordDistance = d;
-      bestEver = population[i];
-    }
-    fitness[i] = d;
-  }
 }
 
 //draw all cities and routes between them
-var draw = () => {
+draw = () => {
   background(0);
+
+  //initiate genetic algorithm logic
+  calcFitness();
+  normFitness();
+  nextGeneration();
 
   stroke(255, 0, 255);
   strokeWeight(4);
@@ -57,7 +54,7 @@ var draw = () => {
 // }
 
 //calculate distance between two locations
-var calcDist = (points, order) => {
+calcDist = (points, order) => {
   let sum = 0;
   for (let i = 0; i < order.length - 1; i++) {
     let cityAIndex = order[i];
