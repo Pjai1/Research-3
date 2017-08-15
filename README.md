@@ -31,6 +31,14 @@ This repo contains all coursework for Web R&D for Year 3 of MT at KdG and is spl
     - Performance: To run these performance tests run `npm i` in both the Performance Tests folder and the sub directory. Start the http-server by running `npm start` and don't forget to run `npm run build-prod` in the sub directories as well.
 3. Proof of Concept
     - Is it possible to create an application that provides us with a 'scenic' running/cycling route by running some learning algorithms such as we know in Machine and Deep Learning
-    - Travelling Salesperson Problem (TSP) display test with P5 library
+    - Learning basics of ML:
+        - Retrieving data
+        - Tidying data
+        - Asking the right question
+        - Selecting the right algorithm(s)
+        - Training and testing the model
+    - Basic exercise on ML with a classification algorithm with the help of Naïve Bayes, Logistic Regression and Confusion Matrix
+    - Travelling Salesperson Problem (TSP) display test with P5 library: finding the most optimal route between a set amount of points with a genetic algorithm using crossover and mutation
     - Clarifai Image Recognition Pattern Algorithm test for tagging input images
+    - Basic Google Street View Scraper to gather images
 
